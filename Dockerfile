@@ -1,4 +1,4 @@
-FROM python:3-slim
+FROM python:3
 MAINTAINER Gary Reynolds <gary@touch.asn.au>
 
 RUN curl -s https://bootstrap.pypa.io/get-pip.py | python2.7
