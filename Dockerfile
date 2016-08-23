@@ -8,6 +8,8 @@ RUN apt-get update && apt-get install -y \
   libpython2.7-dev \
   && rm -rf /var/lib/apt/lists/*
 
+RUN pip2.7 install bumpversion
+
 VOLUME /src
 WORKDIR /src
 
