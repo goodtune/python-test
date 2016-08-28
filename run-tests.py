@@ -9,7 +9,7 @@ import sys
 @click.option('--result-json', default='result.json')
 @click.argument('devpi_endpoint')
 @click.option('--devpi-username', envvar='DEVPI_USERNAME')
-@click.option('--devpi-password', envvar='DEVPI_USERNAME')
+@click.option('--devpi-password', envvar='DEVPI_PASSWORD')
 @click.option('--bitbucket-branch', envvar='BITBUCKET_BRANCH')
 def run(result_json, devpi_endpoint, devpi_username, devpi_password,
         bitbucket_branch):
