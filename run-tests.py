@@ -11,7 +11,8 @@ import sys
 @click.option('--devpi-username', envvar='DEVPI_USERNAME')
 @click.option('--devpi-password', envvar='DEVPI_USERNAME')
 @click.option('--bitbucket-branch', envvar='BITBUCKET_BRANCH')
-def run(result_json, devpi_endpoint, devpi_username, devpi_password):
+def run(result_json, devpi_endpoint, devpi_username, devpi_password,
+        bitbucket_branch):
     try:
         subprocess.check_call(["tox", "-r", "--result-json", result_json])
     except subprocess.CalledProcessError:
