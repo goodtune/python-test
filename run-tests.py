@@ -32,10 +32,11 @@ def run(result_json, devpi_endpoint, devpi_username, devpi_password,
     if bitbucket_branch != 'master':
         try:
             subprocess.check_call([
-                "bumpversion", "dev",
+                "bumpversion",
                 "--list",
                 "--no-commit",
-                "--new-version=$(python setup.py --version).dev$(date +%s)"],
+                "--new-version=$(python setup.py --version).dev$(date +%s)",
+                "dev"],
                 shell=True)
         except subprocess.CalledProcessError:
             sys.exit(4)
