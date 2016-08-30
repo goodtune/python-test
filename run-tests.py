@@ -3,6 +3,7 @@
 import click
 import subprocess
 import sys
+import time
 
 
 @click.command()
@@ -31,13 +32,17 @@ def run(result_json, devpi_endpoint, devpi_username, devpi_password,
 
     if bitbucket_branch != 'master':
         try:
+            version = subprocess.check_output([
+                "python", "setup.py", "--version"]).strip()
+            epoch = int(time.time())
+
             subprocess.check_call([
                 "bumpversion",
                 "--list",
                 "--no-commit",
-                "--new-version=$(python setup.py --version).dev$(date +%s)",
-                "dev"],
-                shell=True)
+                "--new-version",
+                "{}.dev{}".format(version, epoch),
+                "dev"])
         except subprocess.CalledProcessError:
             sys.exit(4)
 
