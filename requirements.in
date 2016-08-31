@@ -1,0 +1,4 @@
+tox
+devpi-client
+bumpversion
+click
