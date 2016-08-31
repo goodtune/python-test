@@ -12,10 +12,12 @@ import time
 @click.option('--devpi-username', envvar='DEVPI_USERNAME')
 @click.option('--devpi-password', envvar='DEVPI_PASSWORD')
 @click.option('--bitbucket-branch', envvar='BITBUCKET_BRANCH')
+@click.option('--detox', is_flag=True)
 def run(result_json, devpi_endpoint, devpi_username, devpi_password,
-        bitbucket_branch):
+        bitbucket_branch, detox):
     try:
-        subprocess.check_call(["tox", "-r", "--result-json", result_json])
+        cmd = "detox" if detox else "tox"
+        subprocess.check_call([cmd, "-r", "--result-json", result_json])
     except subprocess.CalledProcessError:
         sys.exit(1)
 
