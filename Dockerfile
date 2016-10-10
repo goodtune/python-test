@@ -14,5 +14,3 @@ RUN pip2.7 install --no-cache-dir -r /tmp/requirements.txt
 
 VOLUME /src
 WORKDIR /src
-
-ENTRYPOINT ["run-tests"]
