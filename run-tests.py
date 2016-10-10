@@ -17,6 +17,7 @@ def run(result_json, devpi_endpoint, devpi_username, devpi_password,
         bitbucket_branch, detox):
     try:
         cmd = "detox" if detox else "tox"
+        subprocess.check_call(["tox", "--showconfig"])
         subprocess.check_call([cmd, "-r", "--result-json", result_json])
     except subprocess.CalledProcessError:
         sys.exit(1)
