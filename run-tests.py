@@ -1,6 +1,7 @@
 #!/usr/bin/env python2.7
 
 import click
+import ConfigParser
 import subprocess
 import sys
 import time
@@ -13,8 +14,24 @@ import time
 @click.option('--devpi-password', envvar='DEVPI_PASSWORD')
 @click.option('--bitbucket-branch', envvar='BITBUCKET_BRANCH')
 @click.option('--detox', is_flag=True)
+@click.option(
+    '--tox-ini-file', 'toxini', default='tox.ini', envvar='TOXINI',
+    type=click.Path(exists=True, dir_okay=False, writable=True))
+@click.option(
+    '--work-dir', default='.tox', envvar='TOXWORKDIR',
+    type=click.Path(file_okay=False, writable=True, resolve_path=True),
+    help='Directory where tox will create virtual environments')
 def run(result_json, devpi_endpoint, devpi_username, devpi_password,
-        bitbucket_branch, detox):
+        bitbucket_branch, detox, work_dir, toxini):
+    config = ConfigParser.SafeConfigParser()
+    config.read([toxini])
+
+    if work_dir:
+        config.set('tox', 'toxworkdir', work_dir)
+
+    with open(toxini, 'w') as fp:
+        config.write(fp)
+
     try:
         cmd = "detox" if detox else "tox"
         subprocess.check_call(["tox", "--showconfig"])
