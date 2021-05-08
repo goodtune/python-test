@@ -4,24 +4,50 @@
 #
 #    pip-compile --no-index --output-file requirements.txt requirements.in
 #
-
 bumpversion==0.5.3
-certifi==2017.7.27.1      # via requests
-chardet==3.0.4            # via requests
-check-manifest==0.35      # via devpi-client
+    # via -r requirements.in
+certifi==2017.7.27.1
+    # via requests
+chardet==3.0.4
+    # via requests
+check-manifest==0.35
+    # via devpi-client
 click==6.7
+    # via -r requirements.in
 detox==0.11
+    # via -r requirements.in
 devpi-client==3.0.0
-devpi-common==3.1.0       # via devpi-client
-enum-compat==0.0.2        # via eventlet
-enum34==1.1.6             # via enum-compat
-eventlet==0.21.0          # via detox
-greenlet==0.4.12          # via eventlet
-idna==2.6                 # via requests
-pkginfo==1.4.1            # via devpi-client
-pluggy==0.5.2             # via tox
-py==1.4.34                # via detox, devpi-client, devpi-common, tox
-requests==2.18.4          # via devpi-common
+    # via -r requirements.in
+devpi-common==3.1.0
+    # via devpi-client
+dnspython==1.16.0
+    # via eventlet
+eventlet==0.31.0
+    # via detox
+greenlet==0.4.12
+    # via eventlet
+idna==2.6
+    # via requests
+pkginfo==1.4.1
+    # via devpi-client
+pluggy==0.5.2
+    # via tox
+py==1.4.34
+    # via
+    #   detox
+    #   devpi-client
+    #   devpi-common
+    #   tox
+requests==2.18.4
+    # via devpi-common
+six==1.16.0
+    # via eventlet
 tox==2.8.1
-urllib3==1.22             # via requests
-virtualenv==15.1.0        # via tox
+    # via
+    #   -r requirements.in
+    #   detox
+    #   devpi-client
+urllib3==1.22
+    # via requests
+virtualenv==15.1.0
+    # via tox
